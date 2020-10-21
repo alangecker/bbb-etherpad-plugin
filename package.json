@@ -1,0 +1,9 @@
+{
+    "name": "ep_bigbluebutton_patches",
+    "version": "0.0.1",
+    "description": "Changes for BBB",
+    "author": "chandi <git@chandi.it>",
+    "contributors": [],
+    "dependencies": {},
+    "engines": { "node": ">= 10.13.0"}
+}

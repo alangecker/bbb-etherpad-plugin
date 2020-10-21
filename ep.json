@@ -1,0 +1,16 @@
+{
+    "parts": [
+        {
+            "name": "bbb_hooks",
+            "hooks": {
+                "init_ep_bigbluebutton_patches": "ep_bigbluebutton_patches/index:init",
+                "eejsBlock_loading": "ep_bigbluebutton_patches/index:eejsBlock_loading",
+                "eejsBlock_importColumn": "ep_bigbluebutton_patches/index:eejsBlock_importColumn"
+            },
+            "client_hooks": {
+                "documentReady": "ep_bigbluebutton_patches/static/js/client_hooks:documentReady",
+                "postAceInit": "ep_bigbluebutton_patches/static/js/client_hooks:postAceInit"
+            }
+        }
+    ]
+}

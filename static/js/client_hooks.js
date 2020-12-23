@@ -6,16 +6,17 @@ function getSessionToken(location) {
 }
 
 exports.documentReady = function (hook_name, args, cb) {
-    
-    // wrap io.connect to append the sessionToken
-    var ioConnect = io.connect;
-    var wrappedIoConnect = function (url, options) {
-        if(!options) options = {};
-        options['query'] = "sessionToken=" + getSessionToken(document.location);
-        return ioConnect(url, options);
-    }
-    io.connect = wrappedIoConnect;
+    const socketio = require("ep_etherpad-lite/static/js/socketio")
 
+    // wrap connect() for adding the sessionToken to the query params
+    const originalConnect = socketio.connect
+    socketio.connect = function(etherpadBaseUrl, namespace = '/', options = {} ) {
+        return originalConnect(etherpadBaseUrl, namespace, Object.assign({
+            query: {
+                sessionToken: getSessionToken(document.location)
+            }
+        }, options))
+    }
     return cb();
 }
 

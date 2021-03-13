@@ -17,6 +17,17 @@ exports.documentReady = function (hook_name, args, cb) {
             }
         }, options))
     }
+
+    const pad_utils = require("ep_etherpad-lite/static/js/pad_utils");
+
+    // wrap js-cookie's setter for configuring all cookies expiration to Session
+    const originalCookiesSetter = pad_utils.Cookies['set'];
+    pad_utils.Cookies['set'] = function(key, value, attributes = {}) {
+      // destructure attributes to remove expires property
+      const { expires, ...attr } = attributes;
+      return originalCookiesSetter(key, value, attr);
+    }
+
     return cb();
 }
 

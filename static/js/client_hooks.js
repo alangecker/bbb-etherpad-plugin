@@ -11,11 +11,11 @@ exports.documentReady = function (hook_name, args, cb) {
     // wrap connect() for adding the sessionToken to the query params
     const originalConnect = socketio.connect
     socketio.connect = function(etherpadBaseUrl, namespace = '/', options = {} ) {
-        return originalConnect(etherpadBaseUrl, namespace, Object.assign({
-            query: {
+        return originalConnect(etherpadBaseUrl, namespace, Object.assign({}, options, {
+            query: Object.assign({
                 sessionToken: getSessionToken(document.location)
-            }
-        }, options))
+            }, options.query || {})
+        }))
     }
 
     const pad_utils = require("ep_etherpad-lite/static/js/pad_utils");

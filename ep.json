@@ -4,7 +4,9 @@
             "name": "bbb_hooks",
             "hooks": {
                 "eejsBlock_loading": "ep_bigbluebutton_patches/index:eejsBlock_loading",
-                "eejsBlock_importColumn": "ep_bigbluebutton_patches/index:eejsBlock_importColumn"
+                "eejsBlock_importColumn": "ep_bigbluebutton_patches/index:eejsBlock_importColumn",
+                "stylesForExport": "ep_bigbluebutton_patches/index:stylesForExport",
+                "exportFileName": "ep_bigbluebutton_patches/index:exportFileName"
             },
             "client_hooks": {
                 "documentReady": "ep_bigbluebutton_patches/static/js/client_hooks:documentReady",

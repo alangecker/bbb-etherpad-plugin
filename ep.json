@@ -6,7 +6,9 @@
                 "eejsBlock_loading": "ep_bigbluebutton_patches/index:eejsBlock_loading",
                 "eejsBlock_importColumn": "ep_bigbluebutton_patches/index:eejsBlock_importColumn",
                 "stylesForExport": "ep_bigbluebutton_patches/index:stylesForExport",
-                "exportFileName": "ep_bigbluebutton_patches/index:exportFileName"
+                "exportFileName": "ep_bigbluebutton_patches/index:exportFileName",
+                "expressConfigure": "ep_bigbluebutton_patches/index:expressConfigure",
+                "exportConvert": "ep_bigbluebutton_patches/index:exportConvert"
             },
             "client_hooks": {
                 "documentReady": "ep_bigbluebutton_patches/static/js/client_hooks:documentReady",

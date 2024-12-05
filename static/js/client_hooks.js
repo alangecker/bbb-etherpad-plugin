@@ -5,9 +5,8 @@ function getSessionToken(location) {
   return sessionToken;
 }
 
-exports.documentReady = function (hook_name, args, cb) {
+// inject sessionToken into socketio.connect  
     const socketio = require("ep_etherpad-lite/static/js/socketio")
-
     // wrap connect() for adding the sessionToken to the query params
     const originalConnect = socketio.connect
     socketio.connect = function(etherpadBaseUrl, namespace = '/', options = {} ) {
@@ -18,6 +17,7 @@ exports.documentReady = function (hook_name, args, cb) {
         }))
     }
 
+exports.documentReady = function (hook_name, args, cb) {
     const pad_utils = require("ep_etherpad-lite/static/js/pad_utils");
 
     // wrap js-cookie's setter for configuring all cookies expiration to Session

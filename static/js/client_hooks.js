@@ -6,16 +6,16 @@ function getSessionToken(location) {
 }
 
 // inject sessionToken into socketio.connect  
-    const socketio = require("ep_etherpad-lite/static/js/socketio")
-    // wrap connect() for adding the sessionToken to the query params
-    const originalConnect = socketio.connect
-    socketio.connect = function(etherpadBaseUrl, namespace = '/', options = {} ) {
-        return originalConnect(etherpadBaseUrl, namespace, Object.assign({}, options, {
-            query: Object.assign({
-                sessionToken: getSessionToken(document.location)
-            }, options.query || {})
-        }))
-    }
+const socketio = require("ep_etherpad-lite/static/js/socketio")
+// wrap connect() for adding the sessionToken to the query params
+const originalConnect = socketio.connect
+socketio.connect = function(etherpadBaseUrl, namespace = '/', options = {} ) {
+    return originalConnect(etherpadBaseUrl, namespace, Object.assign({}, options, {
+        query: Object.assign({
+            sessionToken: getSessionToken(document.location)
+        }, options.query || {})
+    }))
+}
 
 exports.documentReady = function (hook_name, args, cb) {
     const pad_utils = require("ep_etherpad-lite/static/js/pad_utils");
